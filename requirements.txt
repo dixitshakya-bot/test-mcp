@@ -1,0 +1,13 @@
+# fastmcp
+# groq
+# langchain-mcp-adapters
+# sqlite3-binary
+# uvicorn
+
+
+fastmcp
+groq
+langchain-mcp-adapters
+uvicorn
+pdfplumber
+python-dotenv
