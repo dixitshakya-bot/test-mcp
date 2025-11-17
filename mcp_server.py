@@ -1,19 +1,18 @@
 from fastmcp import FastMCP
 from groq import Groq
-from db import init_db, save_classification
+# from db import init_db, save_classification
 import os
 from dotenv import load_dotenv
 load_dotenv()
 
 # Init DB
-init_db()
+# init_db()
 
 # Groq client
 # groq_client = Groq(api_key=os.getenv("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"))
 groq_client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 # FastMCP server
 mcp = FastMCP("Sports MCP Server")
-
 
 # ======================================================
 # 🔹 1. TEXT EXTRACTION + CLASSIFICATION TOOL
@@ -40,16 +39,14 @@ def extract_and_classify(text: str) -> dict:
     else:
         category = "general"
 
-    save_classification(
-        pdf_path="",
-        extracted_text=text,
-        category=category,
-        analysis=summary
-    )
+    # save_classification(
+    #     pdf_path="",
+    #     extracted_text=text,
+    #     category=category,
+    #     analysis=summary
+    # )
 
     return {"summary": summary, "category": category}
-
-
 
 # ======================================================
 # 🔹 2. FOOTBALL ANALYSIS TOOL
@@ -65,7 +62,6 @@ def football_analysis(question: str) -> str:
         ]
     )
     return response.choices[0].message.content
-
 
 # ======================================================
 # 🔹 3. CRICKET ANALYSIS TOOL
@@ -90,5 +86,5 @@ def add(a :int , b:int) -> int:
 # 🔹 RUN SERVER
 # ======================================================
 if __name__ == "__main__":
-    mcp.run(transport="http",host="0.0.0.0", port=8000 , )
+    mcp.run(transport="http",host="0.0.0.0", port=8000 )
 
